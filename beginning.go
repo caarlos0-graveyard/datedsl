@@ -4,13 +4,12 @@ import "time"
 
 // BeginningOfDay returns a DSL with the current day at 00:00:00.0000
 func (d DateDSL) BeginningOfDay() DateDSL {
-	durations := []time.Duration{
-		time.Duration(-d.Value().Hour()) * time.Hour,
-		time.Duration(-d.Value().Minute()) * time.Minute,
-		time.Duration(-d.Value().Second()) * time.Second,
-		time.Duration(-d.Value().Nanosecond()) * time.Nanosecond,
+	return DateDSL{
+		mutate(
+			d.Value().Truncate(time.Hour),
+			time.Duration(-d.Value().Hour())*time.Hour,
+		),
 	}
-	return DateDSL{mutate(d.Value(), durations...)}
 }
 
 // BeginningOfMonth returns a DSL at first day of the current month,
