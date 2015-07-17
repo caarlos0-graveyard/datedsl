@@ -2,6 +2,11 @@ package datedsl
 
 import "time"
 
+// BeginningOfHour returns a DSL with the current day at 00:00:00.0000
+func (d DateDSL) BeginningOfHour() DateDSL {
+	return DateDSL{d.Value().Truncate(time.Hour)}
+}
+
 // BeginningOfDay returns a DSL with the current day at 00:00:00.0000
 func (d DateDSL) BeginningOfDay() DateDSL {
 	return DateDSL{

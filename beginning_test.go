@@ -7,6 +7,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestBeginningOfHour(t *testing.T) {
+	value := New(parse("Fri Jul 17 10:13:59 MST 2015")).BeginningOfHour()
+	expected := parse("Fri Jul 17 10:00:00 MST 2015")
+	assert.Equal(t, expected.String(), value.String())
+}
+
 func TestBeginningOfDay(t *testing.T) {
 	value := New(parse("Fri Jul 17 10:13:59 MST 2015")).BeginningOfDay()
 	expected := parse("Fri Jul 17 00:00:00 MST 2015")
