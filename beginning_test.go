@@ -19,6 +19,12 @@ func TestFirstDayOfMonth(t *testing.T) {
 	assert.Equal(t, expected.String(), value.String())
 }
 
+func TestFirstDayOfYear(t *testing.T) {
+	value := New(parse("Fri Jul 17 09:54:37 MST 2015")).BeginningOfYear()
+	expected := parse("Thu Jan 1 00:00:00 MST 2015")
+	assert.Equal(t, expected.String(), value.String())
+}
+
 func parse(s string) time.Time {
 	t, _ := time.Parse(time.UnixDate, s)
 	return t
