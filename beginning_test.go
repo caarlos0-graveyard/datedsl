@@ -1,0 +1,25 @@
+package datedsl
+
+import (
+	"testing"
+	"time"
+
+	"github.com/stretchr/testify/assert"
+)
+
+func TestBeginningOfDay(t *testing.T) {
+	value := New(parse("Fri Jul 17 10:13:59 MST 2015")).BeginningOfDay()
+	expected := parse("Fri Jul 17 00:00:00 MST 2015")
+	assert.Equal(t, expected.String(), value.String())
+}
+
+func TestFirstDayOfMonth(t *testing.T) {
+	value := New(parse("Fri Jul 17 09:54:37 MST 2015")).BeginningOfMonth()
+	expected := parse("Wed Jul 1 00:00:00 MST 2015")
+	assert.Equal(t, expected.String(), value.String())
+}
+
+func parse(s string) time.Time {
+	t, _ := time.Parse(time.UnixDate, s)
+	return t
+}
