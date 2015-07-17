@@ -7,6 +7,13 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestBeginningOfSecond(t *testing.T) {
+	value := New(parse("Fri Jul 17 10:13:59 MST 2015")).BeginningOfSecond()
+	expected := parse("Fri Jul 17 10:13:59 MST 2015")
+	assert.Equal(t, expected.String(), value.String())
+	assert.Equal(t, 0, value.Value().Nanosecond())
+}
+
 func TestBeginningOfMinute(t *testing.T) {
 	value := New(parse("Fri Jul 17 10:13:59 MST 2015")).BeginningOfMinute()
 	expected := parse("Fri Jul 17 10:13:00 MST 2015")

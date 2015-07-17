@@ -2,6 +2,11 @@ package datedsl
 
 import "time"
 
+// BeginningOfSecond returns a DSL with the current minute at 0000ns
+func (d DateDSL) BeginningOfSecond() DateDSL {
+	return DateDSL{d.Value().Truncate(time.Second)}
+}
+
 // BeginningOfMinute returns a DSL with the current minute at 00s.0000ns
 func (d DateDSL) BeginningOfMinute() DateDSL {
 	return DateDSL{d.Value().Truncate(time.Minute)}
