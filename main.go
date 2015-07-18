@@ -5,6 +5,8 @@ import "time"
 const (
 	// Day represents a day in Nanoseconds
 	Day = time.Hour * 24
+	// Month represents a month (30 days) in Nanoseconds
+	Month = Day * 30
 )
 
 // DateDSL the main type
